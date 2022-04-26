@@ -16,6 +16,12 @@ public class VueDuJeu extends Pane {
 
     private IJeu jeu;
     private VuePlateau plateau;
+    //private VueAutresJoueurs autresJoueurs;
+    //private VueCarteWagon carteWagon;
+    //private VueChoixJoueurs choixJoueurs;
+    //private VueDestination choixDestination;
+    private VueJoueurCourant joueurCourant;
+
 
     public VueDuJeu(IJeu jeu) {
         this.jeu = jeu;
