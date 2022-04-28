@@ -33,7 +33,10 @@ public class VueChoixJoueurs extends Stage {
     /**
      * Définit l'action à exécuter lorsque la liste des participants est correctement initialisée
      */
-    public void setNomsDesJoueursDefinisListener(ListChangeListener<String> quandLesNomsDesJoueursSontDefinis) {}
+    public void setNomsDesJoueursDefinisListener(ListChangeListener<String> quandLesNomsDesJoueursSontDefinis) {
+        nomsJoueurs.addListener(quandLesNomsDesJoueursSontDefinis);
+
+    }
 
     /**
      * Définit l'action à exécuter lorsque le nombre de participants change

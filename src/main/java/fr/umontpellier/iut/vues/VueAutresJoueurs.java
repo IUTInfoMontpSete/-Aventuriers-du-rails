@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.vues;
 
+import fr.umontpellier.iut.IJoueur;
 import javafx.scene.layout.Pane;
 
 /**

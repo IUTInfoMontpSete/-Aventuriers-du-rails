@@ -1,9 +1,7 @@
 package fr.umontpellier.iut.vues;
 
-import fr.umontpellier.iut.IDestination;
 import fr.umontpellier.iut.IJoueur;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.beans.value.ChangeListener;
 import javafx.scene.layout.Pane;
 
 /**
@@ -22,6 +20,7 @@ public class VueJoueurCourant extends Pane {
     public VueJoueurCourant(IJoueur ijoueur){
         this.ijoueur = ijoueur;
     }
+
 
     public IJoueur getIJoueur(){
         return this.ijoueur;
@@ -43,5 +42,5 @@ public class VueJoueurCourant extends Pane {
         if(ijoueur.getCouleur().equals("ROSE")){
             ImageView avatarRose = new ImageView(new Image("/images/avatar-ROSE.png"));
         }
-    }
+     */
 }
