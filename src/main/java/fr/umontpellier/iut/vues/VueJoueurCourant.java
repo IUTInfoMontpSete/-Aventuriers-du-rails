@@ -2,6 +2,7 @@ package fr.umontpellier.iut.vues;
 
 import fr.umontpellier.iut.IJoueur;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.layout.Pane;
 
 /**
@@ -12,19 +13,35 @@ import javafx.scene.layout.Pane;
 public class VueJoueurCourant extends Pane {
 
 
-    private IJoueur ijoueur;    // TODO : La couleur choisi par le joueur courant designe sont AVATAR
+    private IJoueur joueurCourant;// TODO : La couleur choisi par le joueur courant designe sont AVATAR
+    private ChangeListener<IJoueur> listener = new ChangeListener<>() {
+        @Override
+        public void changed(ObservableValue<? extends IJoueur> observable, IJoueur oldValue, IJoueur newValue) {
+            joueurCourant = newValue;
+        }
+    };
 
-    /**
-     * Constructeur
-     */
-    public VueJoueurCourant(IJoueur ijoueur){
-        this.ijoueur = ijoueur;
+
+    public VueJoueurCourant(IJoueur ijoueur) {
+        this.joueurCourant = ijoueur;
+    }
+
+    public void setIJoueurCourant(IJoueur ijoueur){
+        this.joueurCourant = ijoueur;
     }
 
 
-    public IJoueur getIJoueur(){
-        return this.ijoueur;
+
+    public IJoueur getIJoueurCourant() {
+        return this.joueurCourant;
     }
+
+
+}
+
+
+
+    /*
     public void getAvatar(){
 
         if(ijoueur.getCouleur().equals("BLEU")){
@@ -43,4 +60,4 @@ public class VueJoueurCourant extends Pane {
             ImageView avatarRose = new ImageView(new Image("/images/avatar-ROSE.png"));
         }
      */
-}
+
