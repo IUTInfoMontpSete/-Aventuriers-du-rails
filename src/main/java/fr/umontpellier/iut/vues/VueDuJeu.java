@@ -30,7 +30,7 @@ public class VueDuJeu extends Pane {
         //autresJoueurs = new VueAutresJoueurs();
         //carteWagon = new VueCarteWagon();
         //choixJoueurs = new VueChoixJoueurs();
-        joueurCourant = new VueJoueurCourant(joueurCourant.getIJoueur());
+        joueurCourant = new VueJoueurCourant(joueurCourant.getIJoueurCourant());
         //choixDestination = new VueDestination();
 
 
