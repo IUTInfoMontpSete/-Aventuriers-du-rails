@@ -15,29 +15,27 @@ import javafx.scene.layout.Pane;
 public class VueDuJeu extends Pane {
 
     private IJeu jeu;
-    private VuePlateau plateau;
-    //private VueAutresJoueurs autresJoueurs;
-    //private VueCarteWagon carteWagon;
-    //private VueChoixJoueurs choixJoueurs;
-    //private VueDestination choixDestination;
-    private VueJoueurCourant joueurCourant;
+    /**
+     * private VuePlateau plateau;
+     */
+    private static ListChangeListener<Destination> listenersdestinations;
+    private Button passer;
+    private VBox listesdestinations;
 
 
     public VueDuJeu(IJeu jeu) {
         this.jeu = jeu;
-        plateau = new VuePlateau();
-
-        //autresJoueurs = new VueAutresJoueurs();
-        //carteWagon = new VueCarteWagon();
-        //choixJoueurs = new VueChoixJoueurs();
-        joueurCourant = new VueJoueurCourant(joueurCourant.getIJoueurCourant());
-        //choixDestination = new VueDestination();
-
-
-
-        getChildren().add(plateau);
-        getChildren().add(joueurCourant);
-        //getChildren().addAll(plateau, autresJoueurs, carteWagon, choixJoueurs, joueurCourant, choixDestination);
+        /** plateau = new VuePlateau(); */
+        /** getChildren().add(plateau);*/
+        this.passer = new Button("Passer");
+        getChildren().add(passer);
+        this.listesdestinations = new VBox();
+        passer.setOnAction(e -> {
+            jeu.passerAEteChoisi();
+        });
+        listesdestinations.setStyle("-fx-border-color: black;");
+        getChildren().add(listesdestinations);
+        setPrefSize(200, 400);
     }
 
     public IJeu getJeu() {
@@ -45,6 +43,42 @@ public class VueDuJeu extends Pane {
     }
 
     public void creerBindings() {
+
+        listenersdestinations = (ListChangeListener.Change<? extends Destination> c) -> {
+            Platform.runLater(() -> {
+                while (c.next()) {
+                    Label labelDestChoisi = new Label();
+                    labelDestChoisi.setPrefSize(200, 20);
+                    if (c.wasAdded()) {
+                        for (Destination i : c.getAddedSubList()) {
+                            labelDestChoisi.setText(i.getNom());
+                            listesdestinations.getChildren().add(labelDestChoisi);
+
+
+                            System.out.println("ADD : " + i.getNom());
+
+
+                        }
+                    }
+                    if (c.wasRemoved()) {
+                        for (Destination i : c.getRemoved()) {
+                            if (!listesdestinations.getChildren().isEmpty()) {
+                                listesdestinations.getChildren().remove(labelDestChoisi);
+                            }
+
+
+                            System.out.println("REMOVE : " + i.getNom());
+
+                        }
+                    }
+                }
+            });
+        };
+        jeu.destinationsInitialesProperty().addListener(listenersdestinations);
+    }
+
+    public static ListChangeListener<Destination> getListenersdestinations() {
+        return listenersdestinations;
     }
 
 }
