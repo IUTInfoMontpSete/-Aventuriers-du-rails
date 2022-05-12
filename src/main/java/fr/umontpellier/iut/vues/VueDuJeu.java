@@ -28,13 +28,20 @@ public class VueDuJeu extends Pane {
         /** plateau = new VuePlateau(); */
         /** getChildren().add(plateau);*/
         this.passer = new Button("Passer");
-        getChildren().add(passer);
+
+
         this.listesdestinations = new VBox();
         passer.setOnAction(e -> {
             jeu.passerAEteChoisi();
         });
-        listesdestinations.setStyle("-fx-border-color: black;");
+        getChildren().add(passer);
         getChildren().add(listesdestinations);
+
+        nomJoueur = new VueJoueurCourant(nomJoueur.getIJoueurCourant());
+        getChildren().add(nomJoueur);
+
+        listesdestinations.setStyle("-fx-border-color: black;");
+
         setPrefSize(200, 400);
     }
 
@@ -53,22 +60,12 @@ public class VueDuJeu extends Pane {
                         for (Destination i : c.getAddedSubList()) {
                             labelDestChoisi.setText(i.getNom());
                             listesdestinations.getChildren().add(labelDestChoisi);
-
-
-                            System.out.println("ADD : " + i.getNom());
-
-
+                            //nomJoueur.creerBindings();    //TODO : à vérifier
                         }
                     }
                     if (c.wasRemoved()) {
                         for (Destination i : c.getRemoved()) {
-                            if (!listesdestinations.getChildren().isEmpty()) {
-                                listesdestinations.getChildren().remove(labelDestChoisi);
-                            }
-
-
-                            System.out.println("REMOVE : " + i.getNom());
-
+                            listesdestinations.getChildren().remove(trouveLabelDestination(i));
                         }
                     }
                 }

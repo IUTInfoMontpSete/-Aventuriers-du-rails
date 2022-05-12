@@ -1,42 +1,53 @@
 package fr.umontpellier.iut.vues;
 
 import fr.umontpellier.iut.IJoueur;
+import fr.umontpellier.iut.rails.Joueur;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.scene.layout.Pane;
+import javafx.collections.ListChangeListener;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 /**
  * Cette classe présente les éléments appartenant au joueur courant.
  * <p>
  * On y définit les bindings sur le joueur courant, ainsi que le listener à exécuter lorsque ce joueur change
  */
-public class VueJoueurCourant extends Pane {
+public class VueJoueurCourant extends VBox {
 
 
     private IJoueur joueurCourant;// TODO : La couleur choisi par le joueur courant designe sont AVATAR
-    private ChangeListener<IJoueur> listener = new ChangeListener<>() {
-        @Override
-        public void changed(ObservableValue<? extends IJoueur> observable, IJoueur oldValue, IJoueur newValue) {
-            joueurCourant = newValue;
-        }
-    };
+    private static ListChangeListener<Joueur> listenerJoueurChange;
+    private VBox carteJoueurCourant;
+    private Label nomJoueur;
 
 
     public VueJoueurCourant(IJoueur ijoueur) {
         this.joueurCourant = ijoueur;
     }
 
-    public void setIJoueurCourant(IJoueur ijoueur){
-        this.joueurCourant = ijoueur;
-    }
-
-
 
     public IJoueur getIJoueurCourant() {
-        return this.joueurCourant;
+        return joueurCourant;
     }
 
+    public void creerBindings() {
 
+        listenerJoueurChange = (ListChangeListener.Change<? extends Joueur> c) -> {
+            while (c.next()) {
+                if (c.wasAdded()) {
+                    for (Joueur j : c.getAddedSubList()) {
+                        if (j.equals(joueurCourant)) {
+                            nomJoueur.setText(j.getNom());
+
+                        }
+
+                    }
+
+                }
+            }
+        };
+        ((VueDuJeu) getScene().getRoot()).getJeu().joueurCourantProperty().addListener((ChangeListener<? super IJoueur>) listenerJoueurChange);
+    }
 }
 
 
