@@ -60,7 +60,6 @@ public class VueDuJeu extends Pane {
                         for (Destination i : c.getAddedSubList()) {
                             labelDestChoisi.setText(i.getNom());
                             listesdestinations.getChildren().add(labelDestChoisi);
-                            //nomJoueur.creerBindings();    //TODO : à vérifier
                         }
                     }
                     if (c.wasRemoved()) {
@@ -72,6 +71,7 @@ public class VueDuJeu extends Pane {
             });
         };
         jeu.destinationsInitialesProperty().addListener(listenersdestinations);
+        vueJoueurCourant.creerBindings();
     }
 
     public static ListChangeListener<Destination> getListenersdestinations() {

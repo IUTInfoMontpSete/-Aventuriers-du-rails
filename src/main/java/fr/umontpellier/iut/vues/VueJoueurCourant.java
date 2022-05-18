@@ -1,9 +1,8 @@
 package fr.umontpellier.iut.vues;
 
 import fr.umontpellier.iut.IJoueur;
-import fr.umontpellier.iut.rails.Joueur;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
-import javafx.collections.ListChangeListener;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -18,12 +17,20 @@ public class VueJoueurCourant extends VBox {
     private IJoueur joueurCourant;// TODO : La couleur choisi par le joueur courant designe sont AVATAR
     private static ListChangeListener<Joueur> listenerJoueurChange;
     private VBox carteJoueurCourant;
-    private Label nomJoueur;
 
-
-    public VueJoueurCourant(IJoueur ijoueur) {
-        this.joueurCourant = ijoueur;
+    public VueJoueurCourant() {
+        this.nomJoueur = new Label();
+        this.carteJoueurCourant = new VBox();
+        getChildren().add(nomJoueur);
+        getChildren().add(carteJoueurCourant);
+        carteJoueurCourant.setStyle("-fx-background-color: RED;");
     }
+
+    public void carteJoueurCourant(){
+
+
+    }
+
 
 
     public IJoueur getIJoueurCourant() {
@@ -31,44 +38,10 @@ public class VueJoueurCourant extends VBox {
     }
 
     public void creerBindings() {
-
-        listenerJoueurChange = (ListChangeListener.Change<? extends Joueur> c) -> {
-            while (c.next()) {
-                if (c.wasAdded()) {
-                    for (Joueur j : c.getAddedSubList()) {
-                        if (j.equals(joueurCourant)) {
-                            nomJoueur.setText(j.getNom());
-
-                        }
-
-                    }
-
-                }
-            }
+        listenerJoueurChange = (observable, oldValue, newValue) -> {
+            Platform.runLater(() -> nomJoueur.setText(newValue.getNom()));
         };
-        ((VueDuJeu) getScene().getRoot()).getJeu().joueurCourantProperty().addListener((ChangeListener<? super IJoueur>) listenerJoueurChange);
+        ((VueDuJeu) getScene().getRoot()).getJeu().joueurCourantProperty().addListener(listenerJoueurChange);
     }
 }
-
-
-
-    /*
-    public void getAvatar(){
-
-        if(ijoueur.getCouleur().equals("BLEU")){
-            ImageView avatarBleu = new ImageView(new Image("/images/avatar-BLEU.png"));
-        }
-        if(ijoueur.getCouleur().equals("ROUGE")){
-            ImageView avatarRouge = new ImageView(new Image("/images/avatar-ROUGE.png"));
-        }
-        if(ijoueur.getCouleur().equals("VERT")){
-            ImageView avatarVert = new ImageView(new Image("/images/avatar-VERT.png"));
-        }
-        if(ijoueur.getCouleur().equals("JAUNE")){
-            ImageView avatarJaune = new ImageView(new Image("/images/avatar-JAUNE.png"));
-        }
-        if(ijoueur.getCouleur().equals("ROSE")){
-            ImageView avatarRose = new ImageView(new Image("/images/avatar-ROSE.png"));
-        }
-     */
 
