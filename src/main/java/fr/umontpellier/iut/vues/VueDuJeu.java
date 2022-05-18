@@ -73,9 +73,4 @@ public class VueDuJeu extends Pane {
         jeu.destinationsInitialesProperty().addListener(listenersdestinations);
         vueJoueurCourant.creerBindings();
     }
-
-    public static ListChangeListener<Destination> getListenersdestinations() {
-        return listenersdestinations;
-    }
-
 }
