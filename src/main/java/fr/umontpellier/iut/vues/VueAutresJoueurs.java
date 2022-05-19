@@ -11,6 +11,6 @@ import javafx.scene.layout.Pane;
  */
 public class VueAutresJoueurs extends Pane {
 
-
+//TODO : Ce que les autres joueur on le droit de voir dans le joueur quand il son pas joueur courant
 
 }

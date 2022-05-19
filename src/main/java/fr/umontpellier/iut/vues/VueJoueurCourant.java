@@ -22,14 +22,14 @@ public class VueJoueurCourant extends VBox {
     public VueJoueurCourant() {
         this.nomJoueur = new Label();
         this.carteJoueurCourant = new VBox();
-        this.destinationJoueurCourant = new VBox(); // TODO : ADD
+        this.destinationJoueurCourant = new VBox();
 
         getChildren().add(nomJoueur);
         getChildren().add(carteJoueurCourant);
-        getChildren().add(destinationJoueurCourant); // TODO : ADD
+        getChildren().add(destinationJoueurCourant);
 
         carteJoueurCourant.setStyle("-fx-background-color: RED;");
-        destinationJoueurCourant.setStyle("-fx-background-color: GREEN;"); // TODO : ADD
+        destinationJoueurCourant.setStyle("-fx-background-color: GREEN;");
     }
 
     public Label trouveLabelCarte(IJoueur i) {
@@ -67,13 +67,13 @@ public class VueJoueurCourant extends VBox {
                 destinationDuJC.setText(newValue.getDestinations().toString());
 
 
-                carteJoueurCourant.getChildren().remove(trouveLabelCarte(oldValue)); // supprime l'ancienne carte du joueur courant
-                carteJoueurCourant.getChildren().add(carteDuJC); // ajoute la nouvelle carte du joueur courant
+                carteJoueurCourant.getChildren().remove(trouveLabelCarte(oldValue));
+                carteJoueurCourant.getChildren().add(carteDuJC);
 
-                destinationJoueurCourant.getChildren().remove(trouveLabelDest(oldValue)); // supprime l'ancienne destination du joueur courant // TODO : ADD
-                destinationJoueurCourant.getChildren().add(destinationDuJC); //ajoute la nouvelle destination du joueur courant // TODO : ADD
+                destinationJoueurCourant.getChildren().remove(trouveLabelDest(oldValue));
+                destinationJoueurCourant.getChildren().add(destinationDuJC);
 
-                System.out.println(nomJoueur.getText() + " -> " + carteDuJC.getText() + " -> " + destinationDuJC.getText()); //TODO : à supprimer
+                System.out.println(nomJoueur.getText() + " -> " + carteDuJC.getText() + " -> " + destinationDuJC.getText()); // à supprimer
             });
 
         };

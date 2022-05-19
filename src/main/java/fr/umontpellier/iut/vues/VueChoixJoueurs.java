@@ -15,6 +15,10 @@ import java.util.List;
  * Sa présentation graphique peut automatiquement être actualisée chaque fois que le nombre de joueurs change.
  * Lorsque l'utilisateur a fini de saisir les noms de joueurs, il demandera à démarrer la partie.
  */
+
+// TODO : Faire a la fin (Démarrage du Jeu)
+
+
 public class VueChoixJoueurs extends Stage {
 
     private ObservableList<String> nomsJoueurs;

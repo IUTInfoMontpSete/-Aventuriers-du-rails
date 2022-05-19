@@ -1,6 +1,9 @@
 package fr.umontpellier.iut.vues;
 
 import fr.umontpellier.iut.IDestination;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.scene.layout.Pane;
 
 /**
@@ -11,6 +14,7 @@ import javafx.scene.layout.Pane;
 public class VueDestination extends Pane {
 
     private IDestination destination;
+    private ChangeListener<IDestination> destinationChoisieParJC;
 
     public VueDestination(IDestination destination) {
         this.destination = destination;
@@ -18,6 +22,15 @@ public class VueDestination extends Pane {
 
     public IDestination getDestination() {
         return destination;
+    }
+
+
+    // TODO : Idem Vue Carte Wagon
+
+    public void destinationBidings(){
+        destinationChoisieParJC = (observable, oldValue, newValue) -> {
+            throw new RuntimeException("Vous ne devriez pas avoir appelé cette méthode");
+        };
     }
 
 }
