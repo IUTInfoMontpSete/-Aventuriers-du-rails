@@ -92,6 +92,5 @@ public class VueDuJeu extends VBox {
         };
         jeu.destinationsInitialesProperty().addListener(listenersdestinations);
         vueJoueurCourant.creerBindings();
-
     }
 }
