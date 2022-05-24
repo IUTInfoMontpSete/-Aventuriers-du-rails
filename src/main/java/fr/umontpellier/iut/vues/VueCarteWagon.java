@@ -16,7 +16,6 @@ public class VueCarteWagon extends VBox {
 
     private ICouleurWagon couleurWagon;
     private ChangeListener<IJoueur> carteChoisieParJC;
-    private Label TestLabel;
 
 
     public VueCarteWagon(ICouleurWagon couleurWagon) {

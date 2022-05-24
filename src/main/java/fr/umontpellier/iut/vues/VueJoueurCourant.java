@@ -18,7 +18,6 @@ public class VueJoueurCourant extends VBox {
     private ChangeListener<IJoueur> listenerJoueurChange;
     private VBox destinationJoueurCourant;
     private VBox carteJoueurCourant;
-    private VBox Labeltest;
 
     public VueJoueurCourant() {
         this.nomJoueur = new Label();
