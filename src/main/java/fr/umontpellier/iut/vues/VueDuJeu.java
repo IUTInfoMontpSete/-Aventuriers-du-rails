@@ -72,5 +72,6 @@ public class VueDuJeu extends Pane {
         };
         jeu.destinationsInitialesProperty().addListener(listenersdestinations);
         vueJoueurCourant.creerBindings();
+
     }
 }
