@@ -14,9 +14,9 @@ import javafx.scene.layout.VBox;
  */
 public class VueJoueurCourant extends VBox {
 
-
-    private IJoueur joueurCourant;// TODO : La couleur choisi par le joueur courant designe sont AVATAR
-    private static ListChangeListener<Joueur> listenerJoueurChange;
+    private Label nomJoueur;
+    private ChangeListener<IJoueur> listenerJoueurChange;
+    private VBox destinationJoueurCourant;
     private VBox carteJoueurCourant;
 
     public VueJoueurCourant() {

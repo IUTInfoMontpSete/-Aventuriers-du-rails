@@ -1,7 +1,14 @@
 package fr.umontpellier.iut.vues;
 
+import fr.umontpellier.iut.IDestination;
 import fr.umontpellier.iut.IJeu;
-import javafx.scene.layout.Pane;
+import fr.umontpellier.iut.rails.Destination;
+import javafx.application.Platform;
+import javafx.collections.ListChangeListener;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 /**
  * Cette classe correspond à la fenêtre principale de l'application.
@@ -12,7 +19,7 @@ import javafx.scene.layout.Pane;
  * (le joueur courant, les 5 cartes Wagons visibles, les destinations lors de l'étape d'initialisation de la partie, ...)
  * ainsi que les listeners à exécuter lorsque ces éléments changent
  */
-public class VueDuJeu extends Pane {
+public class VueDuJeu extends VBox {
 
     private IJeu jeu;
     /**
@@ -21,6 +28,8 @@ public class VueDuJeu extends Pane {
     private static ListChangeListener<Destination> listenersdestinations;
     private Button passer;
     private VBox listesdestinations;
+    private VueJoueurCourant vueJoueurCourant;
+
 
 
     public VueDuJeu(IJeu jeu) {
@@ -36,9 +45,9 @@ public class VueDuJeu extends Pane {
         });
         getChildren().add(passer);
         getChildren().add(listesdestinations);
+        vueJoueurCourant = new VueJoueurCourant();
+        getChildren().add(vueJoueurCourant);
 
-        nomJoueur = new VueJoueurCourant(nomJoueur.getIJoueurCourant());
-        getChildren().add(nomJoueur);
 
         listesdestinations.setStyle("-fx-border-color: black;");
 
@@ -48,6 +57,17 @@ public class VueDuJeu extends Pane {
     public IJeu getJeu() {
         return jeu;
     }
+
+    public Label trouveLabelDestination(IDestination i) {
+        Label tld = new Label();
+        for (Node node : listesdestinations.getChildren()) {
+            tld = (Label) node;
+            if (tld.equals(new Label(i.getNom()))) {
+                break;
+            }
+        }
+        return tld;
+    } // Same in VueJoueurCourant
 
     public void creerBindings() {
 
