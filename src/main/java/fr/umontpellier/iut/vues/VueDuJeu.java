@@ -29,8 +29,6 @@ public class VueDuJeu extends VBox {
     private Button passer;
     private VBox listesdestinations;
     private VueJoueurCourant vueJoueurCourant;
-    private VBox testVbox; // Was Added
-
 
 
 
