@@ -30,5 +30,7 @@ public class VuePlateau extends Pane {
 
     @FXML
     public void choixRouteOuVille() {
+
+
     }
 }
