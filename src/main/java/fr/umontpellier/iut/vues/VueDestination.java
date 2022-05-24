@@ -2,8 +2,6 @@ package fr.umontpellier.iut.vues;
 
 import fr.umontpellier.iut.IDestination;
 import javafx.beans.value.ChangeListener;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.scene.layout.Pane;
 
 /**
