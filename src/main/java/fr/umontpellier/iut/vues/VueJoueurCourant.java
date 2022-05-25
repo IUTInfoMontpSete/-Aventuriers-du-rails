@@ -32,9 +32,9 @@ public class VueJoueurCourant extends VBox {
         destinationJoueurCourant.setStyle("-fx-background-color: GREEN;");
     }
 
-    public Label trouveLabelCarte(IJoueur i) {
+    public Label DejaAfficher(IJoueur i, VBox c) {  // TODO : Duplication
         Label tlc = new Label();
-        for (Node node : carteJoueurCourant.getChildren()) {
+        for (Node node : c.getChildren()) {
             tlc = (Label) node;
             if (tlc.equals(new Label(i.getNom()))) {
                 break;
@@ -42,18 +42,6 @@ public class VueJoueurCourant extends VBox {
         }
         return tlc;
     }
-
-    public Label trouveLabelDest(IJoueur i) {
-        Label tlc = new Label();
-        for (Node node : destinationJoueurCourant.getChildren()) {
-            tlc = (Label) node;
-            if (tlc.equals(new Label(i.getNom()))) {
-                break;
-            }
-        }
-        return tlc;
-    }
-
 
     public void creerBindings() {
         listenerJoueurChange = (observable, oldValue, newValue) -> {
@@ -67,10 +55,10 @@ public class VueJoueurCourant extends VBox {
                 destinationDuJC.setText(newValue.getDestinations().toString());
 
 
-                carteJoueurCourant.getChildren().remove(trouveLabelCarte(oldValue));
+                carteJoueurCourant.getChildren().remove(DejaAfficher(oldValue, carteJoueurCourant));
                 carteJoueurCourant.getChildren().add(carteDuJC);
 
-                destinationJoueurCourant.getChildren().remove(trouveLabelDest(oldValue));
+                destinationJoueurCourant.getChildren().remove(DejaAfficher(oldValue, destinationJoueurCourant));
                 destinationJoueurCourant.getChildren().add(destinationDuJC);
 
                 System.out.println(nomJoueur.getText() + " -> " + carteDuJC.getText() + " -> " + destinationDuJC.getText()); // à supprimer

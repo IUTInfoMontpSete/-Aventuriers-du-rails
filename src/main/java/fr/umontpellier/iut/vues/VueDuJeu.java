@@ -29,8 +29,12 @@ public class VueDuJeu extends VBox {
     private Button passer;
     private VBox listesdestinations;
     private VueJoueurCourant vueJoueurCourant;
+    private VueDestination vueDestination;
+    private VueCartesDestination vueCartesDestination;
+    private Button show;
+    private Button hide;
 
-
+    boolean avecVueCarteDestination = true;
 
     public VueDuJeu(IJeu jeu) {
         this.jeu = jeu;
@@ -67,7 +71,7 @@ public class VueDuJeu extends VBox {
             }
         }
         return tld;
-    } // Same in VueJoueurCourant
+    }
 
     public void creerBindings() {
 
@@ -87,10 +91,12 @@ public class VueDuJeu extends VBox {
                             listesdestinations.getChildren().remove(trouveLabelDestination(i));
                         }
                     }
+                    vueCartesDestination.getEnsembleCartes().getChildren().add(labelDestChoisi); // TODO : ADD
                 }
             });
         };
         jeu.destinationsInitialesProperty().addListener(listenersdestinations);
         vueJoueurCourant.creerBindings();
+        //vueCartesDestination.toString(); // TODO : ADD
     }
 }

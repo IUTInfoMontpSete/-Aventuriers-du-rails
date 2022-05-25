@@ -64,6 +64,7 @@ public class VueChoixJoueurs extends Stage {
         }
         if (!tempNamesList.isEmpty()) {
             hide();
+            //Hide();
             nomsJoueurs.clear();
             nomsJoueurs.addAll(tempNamesList);
         }
