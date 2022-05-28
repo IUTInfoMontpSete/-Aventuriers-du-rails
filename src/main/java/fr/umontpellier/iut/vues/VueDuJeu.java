@@ -2,12 +2,14 @@ package fr.umontpellier.iut.vues;
 
 import fr.umontpellier.iut.IDestination;
 import fr.umontpellier.iut.IJeu;
+import fr.umontpellier.iut.IJoueur;
 import fr.umontpellier.iut.rails.Destination;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
@@ -29,12 +31,12 @@ public class VueDuJeu extends VBox {
     private Button passer;
     private VBox listesdestinations;
     private VueJoueurCourant vueJoueurCourant;
-    private VueDestination vueDestination;
     private VueCartesDestination vueCartesDestination;
     private Button show;
     private Button hide;
+    private IJoueur joueurCourant;
+    private HBox cartes;
 
-    boolean avecVueCarteDestination = true;
 
     public VueDuJeu(IJeu jeu) {
         this.jeu = jeu;
@@ -44,9 +46,7 @@ public class VueDuJeu extends VBox {
 
 
         this.listesdestinations = new VBox();
-        passer.setOnAction(e -> {
-            jeu.passerAEteChoisi();
-        });
+        passer.setOnAction(e -> jeu.passerAEteChoisi());
         getChildren().add(passer);
         getChildren().add(listesdestinations);
         vueJoueurCourant = new VueJoueurCourant();
@@ -54,8 +54,14 @@ public class VueDuJeu extends VBox {
 
 
         listesdestinations.setStyle("-fx-border-color: black;");
-
         setPrefSize(200, 400);
+
+        this.cartes = new HBox();
+        getChildren().add(cartes);
+    }
+
+    public HBox getCartes() {
+        return cartes;
     }
 
     public IJeu getJeu() {
@@ -84,6 +90,8 @@ public class VueDuJeu extends VBox {
                         for (Destination i : c.getAddedSubList()) {
                             labelDestChoisi.setText(i.getNom());
                             listesdestinations.getChildren().add(labelDestChoisi);
+                            cartes.getChildren().add(labelDestChoisi);
+
                         }
                     }
                     if (c.wasRemoved()) {
@@ -97,6 +105,5 @@ public class VueDuJeu extends VBox {
         };
         jeu.destinationsInitialesProperty().addListener(listenersdestinations);
         vueJoueurCourant.creerBindings();
-        //vueCartesDestination.toString(); // TODO : ADD
     }
 }

@@ -17,10 +17,8 @@ import javafx.stage.Stage;
 public class VueDestination extends Button {
 
     private IDestination destination;
-    private VueDuJeu vueDuJeu;
     private Button carteDestinationButton;
     private Joueur joueur;
-    private IJoueur nomJoueur;
 
     public VueDestination(IDestination destination) {
         this.destination = destination;
@@ -35,18 +33,17 @@ public class VueDestination extends Button {
     //TODO : set on action, image
 
 
-
     public void destinationBidings() {
 
-        nomJoueur.getNom();
-        joueur.getDestinations();
-        Label label = new Label();
-        label.setText("Choisissez la carte à enlever de votre main");
-        label.setMinHeight(50);
-        label.setMinWidth(50);
-        label.setStyle("-fx-border-color: black; -fx-border-width: 2px;");
-        label.setPadding(new Insets(20));
+        //for pour tout les destinations
+        for (int i = 0; i < 4; i++) {
+            carteDestinationButton = new Button();
+            carteDestinationButton.setGraphic(new Label(destination.getNom()));
+            carteDestinationButton.setPadding(new Insets(10, 10, 10, 10));
+            carteDestinationButton.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 1px;");
+            carteDestinationButton.setText("Choisir cette destination");
+            carteDestinationButton.setOnAction(event -> joueur.getDestinations().remove(destination));
+        }
 
     }
-
 }
