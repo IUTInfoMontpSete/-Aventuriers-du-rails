@@ -23,7 +23,7 @@ import java.util.List;
  * Lorsque l'utilisateur a fini de saisir les noms de joueurs, il demandera à démarrer la partie.
  */
 
-// TODO : Faire a la fin (Démarrage du Jeu)
+// TODO : Fini mais peu étre améliorée
 
 
 public class VueChoixJoueurs extends Stage {
@@ -65,25 +65,32 @@ public class VueChoixJoueurs extends Stage {
 
         hBoxtextHaut = new HBox();
         textHaut = new Label("Choisisez le nombre de joueurs  (Min : 2)");
-        textHaut.setStyle("-fx-font-size: 15px;");
+        textHaut.setStyle("-fx-font-size: 18px;");
         hBoxtextHaut.getChildren().add(textHaut);
         hBoxtextHaut.setAlignment(Pos.CENTER);
+        hBoxtextHaut.paddingProperty().setValue(new javafx.geometry.Insets(4, 10, 10, 10));
 
        hBoxButton = new HBox();
         demarrerPartie = new Button("Démarrer la partie");
+        demarrerPartie.setStyle("-fx-font-size: 15px;");
         hBoxButton.getChildren().add(demarrerPartie);
         hBoxButton.setAlignment(Pos.CENTER);
+        hBoxButton.paddingProperty().setValue(new javafx.geometry.Insets(10, 10, 10, 10));
 
         vboxscene = new VBox();
 
         hBoxJoueurs1 = new HBox();
         hBoxJoueurs1.setAlignment(Pos.CENTER);
+        hBoxJoueurs1.paddingProperty().setValue(new javafx.geometry.Insets(10, 10, 10, 10));
         hBoxJoueurs2 = new HBox();
         hBoxJoueurs2.setAlignment(Pos.CENTER);
+        hBoxJoueurs2.paddingProperty().setValue(new javafx.geometry.Insets(10, 10, 10, 10));
         hBoxJoueurs3 = new HBox();
         hBoxJoueurs3.setAlignment(Pos.CENTER);
+        hBoxJoueurs3.paddingProperty().setValue(new javafx.geometry.Insets(10, 10, 10, 10));
         hBoxJoueurs4 = new HBox();
         hBoxJoueurs4.setAlignment(Pos.CENTER);
+        hBoxJoueurs4.paddingProperty().setValue(new javafx.geometry.Insets(10, 10, 10, 10));
 
         joueurs1 = new TextField();
         joueurs1.setPromptText("Obligatoire");
@@ -102,9 +109,13 @@ public class VueChoixJoueurs extends Stage {
         joueurs4.setPrefWidth(100);
 
         labelJoueur1 = new Label("Joueur 1 : ");
+        labelJoueur1.setStyle("-fx-font-size: 15px;");
         labelJoueur2 = new Label("Joueur 2 : ");
+        labelJoueur2.setStyle("-fx-font-size: 15px;");
         labelJoueur3 = new Label("Joueur 3 : ");
+        labelJoueur3.setStyle("-fx-font-size: 15px;");
         labelJoueur4 = new Label("Joueur 4 : ");
+        labelJoueur4.setStyle("-fx-font-size: 15px;");
 
         hBoxJoueurs1.getChildren().addAll(labelJoueur1, joueurs1);
         hBoxJoueurs2.getChildren().addAll(labelJoueur2, joueurs2);
@@ -113,9 +124,8 @@ public class VueChoixJoueurs extends Stage {
 
 
         vboxscene.getChildren().addAll(hBoxtextHaut, hBoxJoueurs1, hBoxJoueurs2, hBoxJoueurs3, hBoxJoueurs4, hBoxButton);
-        vboxscene.setStyle("-fx-background-color: #c4bd1f"); // voir la VBox
 
-        scene = new Scene(vboxscene, 300, 300);
+        scene = new Scene(vboxscene, 400, 270);
 
 
         demarrerPartie.setOnAction(event -> {
@@ -137,6 +147,7 @@ public class VueChoixJoueurs extends Stage {
             hide();
         });
         setTitle("Choix des joueurs");
+        setResizable(false);
         setScene(scene);
 
     }
