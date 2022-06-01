@@ -12,9 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-
-import java.io.IOException;
 
 /**
  * Cette classe correspond à la fenêtre principale de l'application.
@@ -25,7 +24,7 @@ import java.io.IOException;
  * (le joueur courant, les 5 cartes Wagons visibles, les destinations lors de l'étape d'initialisation de la partie, ...)
  * ainsi que les listeners à exécuter lorsque ces éléments changent
  */
-public class VueDuJeu extends BorderPane {
+public class VueDuJeu extends VBox {
 
     private IJeu jeu;
 
@@ -44,7 +43,7 @@ public class VueDuJeu extends BorderPane {
 
     public VueDuJeu(IJeu jeu) {
         this.jeu = jeu;
-
+/*
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/platfx.fxml"));
             loader.setRoot(this);
@@ -53,7 +52,7 @@ public class VueDuJeu extends BorderPane {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
 
         //plateau = new VuePlateau();
         //getChildren().add(plateau); //  SI ON A UNE VUE PLATEAU

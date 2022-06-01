@@ -4,7 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,7 +28,6 @@ import java.util.List;
 
 public class VueChoixJoueurs extends Stage {
 
-
     private ObservableList<String> nomsJoueurs;
 
     public ObservableList<String> nomsJoueursProperty() {
@@ -39,47 +38,81 @@ public class VueChoixJoueurs extends Stage {
     private Scene scene;
     private VBox vboxscene;
 
-    private TextField Joueurs1;
-    private TextField Joueurs2;
-    private TextField Joueurs3;
-    private TextField Joueurs4;
+    private HBox hBoxJoueurs1;
+    private HBox hBoxJoueurs2;
+    private HBox hBoxJoueurs3;
+    private HBox hBoxJoueurs4;
+    private HBox hBoxButton;
+    private HBox hBoxtextHaut;
+
+    private TextField joueurs1;
+    private TextField joueurs2;
+    private TextField joueurs3;
+    private TextField joueurs4;
 
     private Label labelJoueur1;
     private Label labelJoueur2;
     private Label labelJoueur3;
     private Label labelJoueur4;
+    private Label textHaut;
 
     public List<String> getNomsJoueurs() {
         return nomsJoueurs;
     }
 
-    public VueChoixJoueurs() {
+    public VueChoixJoueurs(){
         nomsJoueurs = FXCollections.observableArrayList();
+
+        hBoxtextHaut = new HBox();
+        textHaut = new Label("Choisisez le nombre de joueurs  (Min : 2)");
+        textHaut.setStyle("-fx-font-size: 15px;");
+        hBoxtextHaut.getChildren().add(textHaut);
+        hBoxtextHaut.setAlignment(Pos.CENTER);
+
+       hBoxButton = new HBox();
         demarrerPartie = new Button("Démarrer la partie");
+        hBoxButton.getChildren().add(demarrerPartie);
+        hBoxButton.setAlignment(Pos.CENTER);
+
         vboxscene = new VBox();
-        Joueurs1 = new TextField();
-        Joueurs1.setPrefWidth(100);
 
-        Joueurs2 = new TextField();
-        Joueurs2.setPrefWidth(100);
+        hBoxJoueurs1 = new HBox();
+        hBoxJoueurs1.setAlignment(Pos.CENTER);
+        hBoxJoueurs2 = new HBox();
+        hBoxJoueurs2.setAlignment(Pos.CENTER);
+        hBoxJoueurs3 = new HBox();
+        hBoxJoueurs3.setAlignment(Pos.CENTER);
+        hBoxJoueurs4 = new HBox();
+        hBoxJoueurs4.setAlignment(Pos.CENTER);
 
-        Joueurs3 = new TextField();
-        Joueurs3.setMaxWidth(100);
+        joueurs1 = new TextField();
+        joueurs1.setPromptText("Obligatoire");
+        joueurs1.setPrefWidth(100);
 
-        Joueurs4 = new TextField();
-        Joueurs4.setPrefWidth(100);
+        joueurs2 = new TextField();
+        joueurs2.setPromptText("Obligatoire");
+        joueurs2.setPrefWidth(100);
+
+        joueurs3 = new TextField();
+        joueurs3.setPromptText("Facultatif");
+        joueurs3.setMaxWidth(100);
+
+        joueurs4 = new TextField();
+        joueurs4.setPromptText("Facultatif");
+        joueurs4.setPrefWidth(100);
 
         labelJoueur1 = new Label("Joueur 1 : ");
         labelJoueur2 = new Label("Joueur 2 : ");
         labelJoueur3 = new Label("Joueur 3 : ");
         labelJoueur4 = new Label("Joueur 4 : ");
 
-        vboxscene.getChildren().add(Joueurs1);
-        vboxscene.getChildren().add(Joueurs2);
-        vboxscene.getChildren().add(Joueurs3);
-        vboxscene.getChildren().add(Joueurs4);
-        vboxscene.getChildren().add(labelJoueur1);
-        vboxscene.getChildren().add(demarrerPartie);
+        hBoxJoueurs1.getChildren().addAll(labelJoueur1, joueurs1);
+        hBoxJoueurs2.getChildren().addAll(labelJoueur2, joueurs2);
+        hBoxJoueurs3.getChildren().addAll(labelJoueur3, joueurs3);
+        hBoxJoueurs4.getChildren().addAll(labelJoueur4, joueurs4);
+
+
+        vboxscene.getChildren().addAll(hBoxtextHaut, hBoxJoueurs1, hBoxJoueurs2, hBoxJoueurs3, hBoxJoueurs4, hBoxButton);
         vboxscene.setStyle("-fx-background-color: #c4bd1f"); // voir la VBox
 
         scene = new Scene(vboxscene, 300, 300);
@@ -87,24 +120,25 @@ public class VueChoixJoueurs extends Stage {
 
         demarrerPartie.setOnAction(event -> {
             List<String> noms = new ArrayList<>();
-            if (!Joueurs1.getText().isEmpty()) {
+            if (!joueurs1.getText().isEmpty()) {
 
-                noms.add(Joueurs1.getText());
+                noms.add(joueurs1.getText());
             }
-            if (!Joueurs2.getText().isEmpty()) {
-                noms.add(Joueurs2.getText());
+            if (!joueurs2.getText().isEmpty()) {
+                noms.add(joueurs2.getText());
             }
-            if (!Joueurs3.getText().isEmpty()) {
-                noms.add(Joueurs3.getText());
+            if (!joueurs3.getText().isEmpty()) {
+                noms.add(joueurs3.getText());
             }
-            if (!Joueurs4.getText().isEmpty()) {
-                noms.add(Joueurs4.getText());
+            if (!joueurs4.getText().isEmpty()) {
+                noms.add(joueurs4.getText());
             }
             nomsJoueurs.addAll(noms);
             hide();
         });
         setTitle("Choix des joueurs");
         setScene(scene);
+
     }
 
     /**
