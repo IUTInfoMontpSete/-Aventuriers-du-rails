@@ -21,8 +21,8 @@ public class VuePlateau extends Pane {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/plateau.fxml"));
             loader.setRoot(this);
-            loader.setController(this);
             loader.load();
+            loader.setController(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

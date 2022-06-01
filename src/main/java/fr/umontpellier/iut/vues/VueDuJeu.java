@@ -6,11 +6,15 @@ import fr.umontpellier.iut.IJoueur;
 import fr.umontpellier.iut.rails.Destination;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 
 /**
  * Cette classe correspond à la fenêtre principale de l'application.
@@ -21,12 +25,12 @@ import javafx.scene.layout.VBox;
  * (le joueur courant, les 5 cartes Wagons visibles, les destinations lors de l'étape d'initialisation de la partie, ...)
  * ainsi que les listeners à exécuter lorsque ces éléments changent
  */
-public class VueDuJeu extends VBox {
+public class VueDuJeu extends BorderPane {
 
     private IJeu jeu;
-    /**
-     * private VuePlateau plateau;
-     */
+
+    //private VuePlateau plateau;
+
     private static ListChangeListener<Destination> listenersdestinations;
     private Button passer;
     private VBox listesdestinations;
@@ -40,10 +44,21 @@ public class VueDuJeu extends VBox {
 
     public VueDuJeu(IJeu jeu) {
         this.jeu = jeu;
-        /** plateau = new VuePlateau(); */
-        /** getChildren().add(plateau);*/
-        this.passer = new Button("Passer");
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/platfx.fxml"));
+            loader.setRoot(this);
+            loader.load();
+            loader.setController(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        //plateau = new VuePlateau();
+        //getChildren().add(plateau); //  SI ON A UNE VUE PLATEAU
+
+        this.passer = new Button("Passer");
 
         this.listesdestinations = new VBox();
         passer.setOnAction(e -> jeu.passerAEteChoisi());
@@ -58,6 +73,7 @@ public class VueDuJeu extends VBox {
 
         this.cartes = new HBox();
         getChildren().add(cartes);
+
     }
 
     public HBox getCartes() {
@@ -80,7 +96,6 @@ public class VueDuJeu extends VBox {
     }
 
     public void creerBindings() {
-
         listenersdestinations = (ListChangeListener.Change<? extends Destination> c) -> {
             Platform.runLater(() -> {
                 while (c.next()) {
@@ -106,4 +121,5 @@ public class VueDuJeu extends VBox {
         jeu.destinationsInitialesProperty().addListener(listenersdestinations);
         vueJoueurCourant.creerBindings();
     }
+
 }

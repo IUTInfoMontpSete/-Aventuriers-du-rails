@@ -11,9 +11,9 @@ public class VueCartesDestination extends Stage {
 
 
     public VueCartesDestination() {
-        this.ensembleCartes = new HBox(vueDuJeu.getCartes());
+        this.ensembleCartes = new HBox();
     }
-
+    // vueDuJeu.getCartes()
 
     public HBox getEnsembleCartes() {
         return ensembleCartes;
