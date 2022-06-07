@@ -19,6 +19,8 @@ public class VueJoueurCourant extends VBox {
     private VBox destinationJoueurCourant;
     private VBox carteJoueurCourant;
 
+    private VueCartesDestination vueCartesDestination;
+
     public VueJoueurCourant() {
         this.nomJoueur = new Label();
         this.carteJoueurCourant = new VBox();
@@ -32,7 +34,8 @@ public class VueJoueurCourant extends VBox {
         destinationJoueurCourant.setStyle("-fx-background-color: GREEN;");
     }
 
-    public Label DejaAfficher(IJoueur i, VBox c) {  // TODO : Duplication
+
+    public Label DejaAfficher(IJoueur i, VBox c) {  // TODO : Duplication !
         Label tlc = new Label();
         for (Node node : c.getChildren()) {
             tlc = (Label) node;
@@ -42,6 +45,9 @@ public class VueJoueurCourant extends VBox {
         }
         return tlc;
     }
+
+
+
 
     public void creerBindings() {
         listenerJoueurChange = (observable, oldValue, newValue) -> {
@@ -61,11 +67,14 @@ public class VueJoueurCourant extends VBox {
                 destinationJoueurCourant.getChildren().remove(DejaAfficher(oldValue, destinationJoueurCourant));
                 destinationJoueurCourant.getChildren().add(destinationDuJC);
 
+
+
                 System.out.println(nomJoueur.getText() + " -> " + carteDuJC.getText() + " -> " + destinationDuJC.getText()); // à supprimer
             });
 
         };
         ((VueDuJeu) getScene().getRoot()).getJeu().joueurCourantProperty().addListener(listenerJoueurChange);
     }
+
 }
 

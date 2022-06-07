@@ -113,10 +113,14 @@ public class VueDuJeu extends VBox {
                             listesdestinations.getChildren().remove(trouveLabelDestination(i));
                         }
                     }
-                    vueCartesDestination.getEnsembleCartes().getChildren().add(labelDestChoisi); // TODO : ADD
+                    vueCartesDestination.setEnsembleCartes().getChildren().add(labelDestChoisi);// VueCartesDestination ajouté carte
                 }
             });
         };
+
+
+
+
         jeu.destinationsInitialesProperty().addListener(listenersdestinations);
         vueJoueurCourant.creerBindings();
     }

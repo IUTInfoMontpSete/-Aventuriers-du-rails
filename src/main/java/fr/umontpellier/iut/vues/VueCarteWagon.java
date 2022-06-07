@@ -28,7 +28,7 @@ public class VueCarteWagon extends VBox {
 
     public void carteBidings(IJeu jeu) {
         this.carteChoisieParJC = (observable, oldValue, newValue) -> {
-            // TODO : Ajouter la carte choisi par le joueur courant et la supprimer de la pioche
+            // TODO : Ajouter la carte choisi par le joueur courant et la supprimer de la pioche -> Fontion uneDestinationAEteChoisie(IJoueur joueur, ICarteDestination carte) dispo dans IJoueur
         };
         ((VueDuJeu) getScene().getRoot()).getJeu().joueurCourantProperty().addListener(carteChoisieParJC);
     }

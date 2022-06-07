@@ -65,6 +65,7 @@ public class VueChoixJoueurs extends Stage {
 
         hBoxtextHaut = new HBox();
         textHaut = new Label("Choisisez le nombre de joueurs  (Min : 2)");
+        textHaut.setUnderline(true);
         textHaut.setStyle("-fx-font-size: 18px;");
         hBoxtextHaut.getChildren().add(textHaut);
         hBoxtextHaut.setAlignment(Pos.CENTER);
