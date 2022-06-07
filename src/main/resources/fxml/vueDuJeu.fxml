@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<fx:root type="Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720" prefWidth="1080" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.umontpellier.iut.vues.VueDuJeu">
+   <children>
+      <Pane id="loader" layoutX="25.0" layoutY="45.0" prefHeight="388.0" prefWidth="631.0" style="-fx-background-color: red;" />
+      <HBox layoutX="27.0" layoutY="9.0" prefHeight="36.0" prefWidth="630.0">
+         <children>
+            <Label id="nbJoueurs" prefHeight="35.0" prefWidth="195.0" text="nbJoueurs" />
+            <Label id="instructions" prefHeight="33.0" prefWidth="337.0" text="instruction" />
+         </children>
+      </HBox>
+      <HBox id="missions" layoutX="25.0" layoutY="439.0" prefHeight="90.0" prefWidth="380.0" style="-fx-background-color: black;" />
+      <Button id="button" layoutX="753.0" layoutY="499.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" text="Passer" />
+      <Button id="piocher" layoutX="417.0" layoutY="445.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="105.0" text="Pioche" />
+      <Button id="choisirDestination" layoutX="535.0" layoutY="445.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="121.0" text="Nouvelles Destinations" />
+      <VBox id="touslesjoueurs" layoutX="667.0" layoutY="14.0" prefHeight="471.0" prefWidth="165.0" style="-fx-background-color: green;">
+         <children>
+            <VBox id="joueurCourant" prefHeight="203.0" prefWidth="165.0" style="-fx-background-color: lime;" />
+            <HBox id="joueurSuivant" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: pink;" />
+            <HBox id="joueurSuivant2" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: brown;" />
+            <HBox id="joueurSuivant3" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: purple;" />
+         </children>
+      </VBox>
+      <Button id="getScore" layoutX="675.0" layoutY="499.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Score" />
+   </children>
+</fx:root>

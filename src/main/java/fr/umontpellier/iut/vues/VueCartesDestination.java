@@ -24,7 +24,6 @@ public class VueCartesDestination extends Stage {
 
 
     private Scene scene;
-
     private final HBox ensembleCartes;
     private VBox textdutextHaut;
     private VBox plateau;

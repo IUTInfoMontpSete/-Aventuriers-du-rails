@@ -18,6 +18,8 @@ public class VueCarteWagon extends VBox {
     private ChangeListener<IJoueur> carteChoisieParJC;
 
 
+
+
     public VueCarteWagon(ICouleurWagon couleurWagon) {
         this.couleurWagon = couleurWagon;
     }

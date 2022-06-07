@@ -33,6 +33,7 @@ public class VueDestination extends Button {
     //TODO : set on action, image
 
 
+
     public void destinationBidings() {
 
         //for pour tout les destinations

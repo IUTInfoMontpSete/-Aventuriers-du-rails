@@ -6,13 +6,11 @@ import fr.umontpellier.iut.IJoueur;
 import fr.umontpellier.iut.rails.Destination;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -29,6 +27,7 @@ public class VueDuJeu extends VBox {
     private IJeu jeu;
 
     //private VuePlateau plateau;
+    private  VueFenetre vueFenetre;
 
     private static ListChangeListener<Destination> listenersdestinations;
     private Button passer;
@@ -41,19 +40,16 @@ public class VueDuJeu extends VBox {
     private HBox cartes;
 
 
-    public VueDuJeu(IJeu jeu) {
-        this.jeu = jeu;
-/*
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/platfx.fxml"));
-            loader.setRoot(this);
-            loader.load();
-            loader.setController(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-*/
 
+
+    public VueDuJeu(IJeu jeu) {
+
+        this.setPrefSize(700, 700);
+
+        this.jeu = jeu;
+
+        vueFenetre = new VueFenetre();
+        getChildren().add(vueFenetre);
         //plateau = new VuePlateau();
         //getChildren().add(plateau); //  SI ON A UNE VUE PLATEAU
 
@@ -114,6 +110,7 @@ public class VueDuJeu extends VBox {
                         }
                     }
                     vueCartesDestination.setEnsembleCartes().getChildren().add(labelDestChoisi);// VueCartesDestination ajouté carte
+                    //System.out.println(jeu.instructionProperty().toString() +" "+ jeu.getJoueurs()); // Debut de la partie
                 }
             });
         };
@@ -123,6 +120,11 @@ public class VueDuJeu extends VBox {
 
         jeu.destinationsInitialesProperty().addListener(listenersdestinations);
         vueJoueurCourant.creerBindings();
+    }
+
+    @FXML
+    public void initialize() {
+        creerBindings();
     }
 
 }
