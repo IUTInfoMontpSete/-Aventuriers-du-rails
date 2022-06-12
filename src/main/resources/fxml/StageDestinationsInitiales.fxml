@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.stage.Stage?>
+
+<fx:root alwaysOnTop="true" resizable="false" title="Choix des destinations" type="Stage" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <scene>
+        <Scene>
+            <AnchorPane fx:id="anchorpane" prefHeight="286.0" prefWidth="426.0" style="-fx-border-color: Black; -fx-border-width: 3;">
+            <children>
+               <Group layoutX="97.0" layoutY="65.0">
+                  <children>
+                     <RadioButton fx:id="rb1" mnemonicParsing="false" prefHeight="18.0" prefWidth="275.0" text="RadioButton">
+                        <toggleGroup>
+                           <ToggleGroup fx:id="groupeRadio" />
+                        </toggleGroup></RadioButton>
+                     <RadioButton fx:id="rb2" layoutY="40.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="275.0" text="RadioButton" toggleGroup="$groupeRadio" />
+                     <RadioButton fx:id="rb3" layoutY="80.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="275.0" text="RadioButton" toggleGroup="$groupeRadio" />
+                     <RadioButton fx:id="rb4" layoutY="120.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="275.0" text="RadioButton" toggleGroup="$groupeRadio" />
+                  </children>
+               </Group>
+               <Button fx:id="validerDestinationlab" layoutX="168.0" layoutY="229.0" mnemonicParsing="false" onKeyPressed="#validerChoix" onMouseClicked="#validerChoix" prefHeight="25.0" prefWidth="90.0" text="Valider" />
+               <Label layoutX="59.0" layoutY="19.0" text="Choissisez une destination à défausser" underline="true">
+                  <font>
+                     <Font size="19.0" />
+                  </font>
+               </Label>
+            </children></AnchorPane>
+        </Scene>
+    </scene>
+</fx:root>

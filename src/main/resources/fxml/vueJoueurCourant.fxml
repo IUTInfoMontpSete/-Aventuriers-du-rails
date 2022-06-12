@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.image.Image?>
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+         prefWidth="304.0" type="VBox" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label fx:id="nomJCourant" alignment="CENTER" prefHeight="45.0" prefWidth="304.0" text="nomJCourant"
+               textAlignment="CENTER" underline="true">
+            <font>
+                <Font size="25.0"/>
+            </font>
+        </Label>
+        <HBox prefHeight="26.0" prefWidth="304.0" spacing="10.0">
+            <children>
+                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+
+                    <image>
+                        <Image url="images/wagons/image-wagon-ROSE.png"/>
+                    </image>
+
+                </ImageView>
+                <Label fx:id="nbWagonsJC" prefHeight="62.0" prefWidth="216.0" text="wagons:" textAlignment="CENTER">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox prefHeight="26.0" prefWidth="304.0" spacing="10.0">
+            <children>
+                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+
+                    <image>
+                        <Image url="images/gares/gare-ROSE.png"/>
+                    </image>
+
+                </ImageView>
+                <Label fx:id="nbGaresJC" prefHeight="62.0" prefWidth="216.0" text="gares :" textAlignment="CENTER">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <VBox prefHeight="115.0" prefWidth="304.0">
+            <children>
+                <Label alignment="CENTER" prefHeight="28.0" prefWidth="304.0" text="missions :">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label fx:id="missionsJC" prefHeight="174.0" prefWidth="304.0" text="Label">
+                            <font>
+                                <Font size="10.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="missionsJC2" prefHeight="174.0" prefWidth="304.0" text="Label">
+                            <font>
+                                <Font size="10.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="152.0" spacing="5.0">
+            <children>
+                <ImageView id="LOCOMOTIVE" fitHeight="40.0" fitWidth="62.0" onMouseClicked="#choixCarte"
+                           pickOnBounds="true" preserveRatio="true">
+
+                    <image>
+                        <Image url="images/cartesWagons/carte-wagon-LOCOMOTIVE.png"/>
+                    </image>
+
+                </ImageView>
+                <Label fx:id="Locomotive" prefHeight="40.0" prefWidth="71.0" text="x0"/>
+            </children>
+            <VBox.margin>
+                <Insets bottom="5.0" left="3.0"/>
+            </VBox.margin>
+        </HBox>
+        <HBox prefHeight="160.0" prefWidth="304.0" spacing="10.0">
+            <children>
+                <VBox prefHeight="160.0" prefWidth="152.0" spacing="5.0">
+                    <children>
+                        <HBox prefHeight="40.0" prefWidth="152.0" spacing="5.0">
+                            <children>
+                                <ImageView id="BLANC" fitHeight="40.0" fitWidth="62.0" onMouseClicked="#choixCarte"
+                                           pickOnBounds="true" preserveRatio="true">
+
+                                    <image>
+                                        <Image url="images/cartesWagons/carte-wagon-BLANC.png"/>
+                                    </image>
+
+                                </ImageView>
+                                <Label fx:id="Blanc" prefHeight="44.0" prefWidth="94.0" text="x0"/>
+                            </children>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="152.0" spacing="5.0">
+                            <children>
+                                <ImageView id="BLEU" fitHeight="40.0" fitWidth="62.0" onMouseClicked="#choixCarte"
+                                           pickOnBounds="true" preserveRatio="true">
+
+                                    <image>
+                                        <Image url="images/cartesWagons/carte-wagon-BLEU.png"/>
+                                    </image>
+
+                                </ImageView>
+                                <Label fx:id="Bleu" prefHeight="44.0" prefWidth="94.0" text="x0"/>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="152.0" spacing="5.0">
+                            <children>
+                                <ImageView id="NOIR" fitHeight="40.0" fitWidth="62.0" onMouseClicked="#choixCarte"
+                                           pickOnBounds="true" preserveRatio="true">
+
+                                    <image>
+                                        <Image url="images/cartesWagons/carte-wagon-NOIR.png"/>
+                                    </image>
+
+                                </ImageView>
+                                <Label fx:id="Noir" prefHeight="44.0" prefWidth="94.0" text="x0"/>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="152.0" spacing="5.0">
+                            <children>
+                                <ImageView id="ORANGE" fitHeight="40.0" fitWidth="62.0" onMouseClicked="#choixCarte"
+                                           pickOnBounds="true" preserveRatio="true">
+
+                                    <image>
+                                        <Image url="images/cartesWagons/carte-wagon-ORANGE.png"/>
+                                    </image>
+
+                                </ImageView>
+                                <Label fx:id="Orange" prefHeight="44.0" prefWidth="94.0" text="x0"/>
+                            </children>
+                        </HBox>
+                    </children>
+                    <HBox.margin>
+                        <Insets left="3.0"/>
+                    </HBox.margin>
+                </VBox>
+                <VBox prefHeight="160.0" prefWidth="152.0" spacing="5.0">
+                    <children>
+                        <HBox prefHeight="40.0" prefWidth="152.0" spacing="5.0">
+                            <children>
+                                <ImageView id="ROSE" fitHeight="40.0" fitWidth="62.0" onMouseClicked="#choixCarte"
+                                           pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="images/cartesWagons/carte-wagon-ROSE.png"/>
+                                    </image>
+
+                                </ImageView>
+                                <Label fx:id="Rose" prefHeight="44.0" prefWidth="94.0" text="x0"/>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="152.0" spacing="5.0">
+                            <children>
+                                <ImageView id="ROUGE" fitHeight="40.0" fitWidth="62.0" onMouseClicked="#choixCarte"
+                                           pickOnBounds="true" preserveRatio="true">
+
+                                    <image>
+                                        <Image url="images/cartesWagons/carte-wagon-ROUGE.png"/>
+                                    </image>
+
+                                </ImageView>
+                                <Label fx:id="Rouge" prefHeight="44.0" prefWidth="94.0" text="x0"/>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="152.0" spacing="5.0">
+                            <children>
+                                <ImageView id="VERT" fitHeight="40.0" fitWidth="62.0" onMouseClicked="#choixCarte"
+                                           pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="images/cartesWagons/carte-wagon-VERT.png"/>
+                                    </image>
+
+                                </ImageView>
+                                <Label fx:id="Vert" prefHeight="44.0" prefWidth="94.0" text="x0"/>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="152.0" spacing="5.0">
+                            <children>
+                                <ImageView id="JAUNE" fitHeight="40.0" fitWidth="62.0" onMouseClicked="#choixCarte"
+                                           pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="images/cartesWagons/carte-wagon-JAUNE.png"/>
+                                    </image>
+                                </ImageView>
+                                <Label fx:id="Jaune" prefHeight="44.0" prefWidth="94.0" text="x0"/>
+                            </children>
+                        </HBox>
+                    </children>
+                    <HBox.margin>
+                        <Insets bottom="3.0"/>
+                    </HBox.margin>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</fx:root>

@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.*?>
 <fx:root stylesheets="@../css/style.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.66" prefWidth="1326.78" type="javafx.scene.layout.Pane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-    <ImageView fitHeight="855.66" fitWidth="1326.78" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="image" fitHeight="855.66" fitWidth="1326.78" pickOnBounds="true" preserveRatio="true">
         <Image url="@../images/euMap.jpg"/>
     </ImageView>
     <Group fx:id="routes">
         <Group id="Amsterdam - Bruxelles" onMouseClicked="#choixRouteOuVille">
-            <Rectangle height="15.600000000000001" layoutX="393.51" layoutY="281.97" rotate="115.25316339457389" width="46.800000000000004" x="-23.400000000000002" y="-7.800000000000001" />
+            <Rectangle height="15.600000000000001" layoutX="393.51" layoutY="281.97" rotate="115.25316339457389" width="46.800000000000004" x="-23.400000000000002" y="-7.800000000000001"/>
         </Group>
         <Group id="Amsterdam - Essen" onMouseClicked="#choixRouteOuVille">
             <Rectangle height="15.600000000000001" layoutX="412.23" layoutY="215.28" rotate="-77.366638064725" width="46.800000000000004" x="-23.400000000000002" y="-7.800000000000001" />
@@ -520,7 +520,7 @@
         <Circle id="Barcelona" layoutX="262.08" layoutY="749.58" onMouseClicked="#choixRouteOuVille" radius="9.36" />
         <Circle id="Lisboa" layoutX="24.96" layoutY="765.1800000000001" onMouseClicked="#choixRouteOuVille" radius="9.36" />
         <Circle id="Pamplona" layoutX="248.04000000000002" layoutY="627.9" onMouseClicked="#choixRouteOuVille" radius="9.36" />
-        <Circle id="Paris" layoutX="331.5" layoutY="424.32" onMouseClicked="#choixRouteOuVille" radius="9.36" />
+        <Circle id="Paris" layoutX="331.5" layoutY="424.32" onMouseClicked="#choixRouteOuVille" radius="9.36" style="-fx-border-color: red"  />
         <Circle id="Dieppe" layoutX="265.98" layoutY="364.26" onMouseClicked="#choixRouteOuVille" radius="9.36" />
         <Circle id="Brest" layoutX="146.64000000000001" layoutY="402.48" onMouseClicked="#choixRouteOuVille" radius="9.36" />
         <Circle id="London" layoutX="279.24" layoutY="244.14000000000001" onMouseClicked="#choixRouteOuVille" radius="9.36" />

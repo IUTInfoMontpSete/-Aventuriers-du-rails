@@ -6,6 +6,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -37,31 +38,19 @@ public class VueChoixJoueurs extends Stage {
     private Button demarrerPartie;
     private Scene scene;
     private VBox vboxscene;
-
-    private HBox hBoxJoueurs1;
-    private HBox hBoxJoueurs2;
-    private HBox hBoxJoueurs3;
-    private HBox hBoxJoueurs4;
-    private HBox hBoxButton;
-    private HBox hBoxtextHaut;
-
-    private TextField joueurs1;
-    private TextField joueurs2;
-    private TextField joueurs3;
-    private TextField joueurs4;
-
-    private Label labelJoueur1;
-    private Label labelJoueur2;
-    private Label labelJoueur3;
-    private Label labelJoueur4;
-    private Label textHaut;
+    private HBox hBoxJoueurs1, hBoxJoueurs2, hBoxJoueurs3, hBoxJoueurs4, hBoxButton, hBoxtextHaut;
+    private TextField joueurs1, joueurs2, joueurs3, joueurs4;
+    private Label labelJoueur1, labelJoueur2, labelJoueur3, labelJoueur4, textHaut;
 
     public List<String> getNomsJoueurs() {
         return nomsJoueurs;
     }
 
-    public VueChoixJoueurs(){
+    public VueChoixJoueurs() {
+
         nomsJoueurs = FXCollections.observableArrayList();
+
+        //Label du haut de la fenêtre
 
         hBoxtextHaut = new HBox();
         textHaut = new Label("Choisisez le nombre de joueurs  (Min : 2)");
@@ -71,14 +60,16 @@ public class VueChoixJoueurs extends Stage {
         hBoxtextHaut.setAlignment(Pos.CENTER);
         hBoxtextHaut.paddingProperty().setValue(new javafx.geometry.Insets(4, 10, 10, 10));
 
-       hBoxButton = new HBox();
+        //Button pour démarrer la partie
+
+        hBoxButton = new HBox();
         demarrerPartie = new Button("Démarrer la partie");
         demarrerPartie.setStyle("-fx-font-size: 15px;");
         hBoxButton.getChildren().add(demarrerPartie);
         hBoxButton.setAlignment(Pos.CENTER);
         hBoxButton.paddingProperty().setValue(new javafx.geometry.Insets(10, 10, 10, 10));
 
-        vboxscene = new VBox();
+        //HBox pour les joueurs
 
         hBoxJoueurs1 = new HBox();
         hBoxJoueurs1.setAlignment(Pos.CENTER);
@@ -92,6 +83,8 @@ public class VueChoixJoueurs extends Stage {
         hBoxJoueurs4 = new HBox();
         hBoxJoueurs4.setAlignment(Pos.CENTER);
         hBoxJoueurs4.paddingProperty().setValue(new javafx.geometry.Insets(10, 10, 10, 10));
+
+        // TextField pour entré le nom des joueurs (joueurs1, joueurs2, joueurs3, joueurs4) et si obligatoire
 
         joueurs1 = new TextField();
         joueurs1.setPromptText("Obligatoire");
@@ -109,6 +102,8 @@ public class VueChoixJoueurs extends Stage {
         joueurs4.setPromptText("Facultatif");
         joueurs4.setPrefWidth(100);
 
+        // Label pour indiquer quel textField pour quel joueur
+
         labelJoueur1 = new Label("Joueur 1 : ");
         labelJoueur1.setStyle("-fx-font-size: 15px;");
         labelJoueur2 = new Label("Joueur 2 : ");
@@ -118,39 +113,42 @@ public class VueChoixJoueurs extends Stage {
         labelJoueur4 = new Label("Joueur 4 : ");
         labelJoueur4.setStyle("-fx-font-size: 15px;");
 
+        // Ajout des éléments dans les HBox (Label avec textField correspondant)
+
         hBoxJoueurs1.getChildren().addAll(labelJoueur1, joueurs1);
         hBoxJoueurs2.getChildren().addAll(labelJoueur2, joueurs2);
         hBoxJoueurs3.getChildren().addAll(labelJoueur3, joueurs3);
         hBoxJoueurs4.getChildren().addAll(labelJoueur4, joueurs4);
 
+        // Ajout des HBox dans la VBox qui permet l'affichage de la fenêtre
 
+        vboxscene = new VBox();
         vboxscene.getChildren().addAll(hBoxtextHaut, hBoxJoueurs1, hBoxJoueurs2, hBoxJoueurs3, hBoxJoueurs4, hBoxButton);
-
         scene = new Scene(vboxscene, 400, 270);
 
+        // Erreur quand le nombre de joueurs est inférieur à 2
 
         demarrerPartie.setOnAction(event -> {
-            List<String> noms = new ArrayList<>();
-            if (!joueurs1.getText().isEmpty()) {
-
-                noms.add(joueurs1.getText());
+            if (joueurs1.getText().isEmpty() || joueurs2.getText().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText("Erreur");
+                alert.setContentText("Veuillez entrer un nom pour au moins 2 joueurs");
+                alert.showAndWait();
+            } else {
+                nomsJoueurs.add(joueurs1.getText());
+                nomsJoueurs.add(joueurs2.getText());
+                if (!joueurs3.getText().isEmpty()) {
+                    nomsJoueurs.add(joueurs3.getText());
+                }
+                if (!joueurs4.getText().isEmpty()) {
+                    nomsJoueurs.add(joueurs4.getText());
+                }
             }
-            if (!joueurs2.getText().isEmpty()) {
-                noms.add(joueurs2.getText());
-            }
-            if (!joueurs3.getText().isEmpty()) {
-                noms.add(joueurs3.getText());
-            }
-            if (!joueurs4.getText().isEmpty()) {
-                noms.add(joueurs4.getText());
-            }
-            nomsJoueurs.addAll(noms);
-            hide();
         });
         setTitle("Choix des joueurs");
         setResizable(false);
         setScene(scene);
-
     }
 
     /**
@@ -160,6 +158,7 @@ public class VueChoixJoueurs extends Stage {
         nomsJoueurs.addListener(quandLesNomsDesJoueursSontDefinis);
 
     }
+
 
     /**
      * Définit l'action à exécuter lorsque le nombre de participants change
