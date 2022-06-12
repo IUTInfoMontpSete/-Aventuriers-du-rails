@@ -9,6 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -50,6 +52,7 @@ public class StageNouvellesDestination extends Stage {
     /**
      * Choix sur la destination a rajouter pour le joueur courant
      */
+    @FXML
     public void validerChoix() {
         if (d1.isSelected() && d2.isSelected() && d3.isSelected()) {
             labelInfo.setText("Vous ne pouvez pas choisir 3 destinations");
@@ -66,7 +69,13 @@ public class StageNouvellesDestination extends Stage {
             close();
             jeu.passerAEteChoisi();
         }
+    }
 
+    @FXML
+    public void validerChoixEnter(KeyEvent event){
+        if(event.getCode() == KeyCode.ENTER) {
+            validerChoix();
+        }
     }
 
     /**

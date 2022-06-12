@@ -13,7 +13,7 @@
         <Scene>
             <AnchorPane fx:id="ancorePaneND" prefHeight="286.0" prefWidth="426.0" style="-fx-border-color: Black; -fx-border-width: 3;">
             <children>
-               <Button fx:id="validerDestinationlab" layoutX="168.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#validerChoix" prefHeight="25.0" prefWidth="90.0" text="Valider" />
+               <Button fx:id="validerDestinationlab" layoutX="168.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#validerChoix" onKeyPressed="#validerChoixEnter" prefHeight="25.0" prefWidth="90.0" text="Valider" />
                <Label fx:id="labelInfo" layoutX="32.0" layoutY="22.0" text="Vous pouvez défausser jusqu'à 2 destinations" underline="true">
                   <font>
                      <Font size="19.0" />

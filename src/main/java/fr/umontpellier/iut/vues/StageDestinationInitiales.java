@@ -7,6 +7,8 @@ import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.RadioButton;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
@@ -107,6 +109,13 @@ public class StageDestinationInitiales extends Stage {
 
         this.close();
         jeu.passerAEteChoisi();
+    }
+
+    @FXML
+    public void validerChoixEnter(KeyEvent event){
+        if(event.getCode() == KeyCode.ENTER) {
+            validerChoix();
+        }
     }
 
     public boolean getStatusFini() {

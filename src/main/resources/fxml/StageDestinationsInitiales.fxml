@@ -26,7 +26,7 @@
                      <RadioButton fx:id="rb4" layoutY="120.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="275.0" text="RadioButton" toggleGroup="$groupeRadio" />
                   </children>
                </Group>
-               <Button fx:id="validerDestinationlab" layoutX="168.0" layoutY="229.0" mnemonicParsing="false" onKeyPressed="#validerChoix" onMouseClicked="#validerChoix" prefHeight="25.0" prefWidth="90.0" text="Valider" />
+               <Button fx:id="validerDestinationlab" layoutX="168.0" layoutY="229.0" mnemonicParsing="false" onKeyPressed="#validerChoixEnter" onMouseClicked="#validerChoix" prefHeight="25.0" prefWidth="90.0" text="Valider" />
                <Label layoutX="59.0" layoutY="19.0" text="Choissisez une destination à défausser" underline="true">
                   <font>
                      <Font size="19.0" />
