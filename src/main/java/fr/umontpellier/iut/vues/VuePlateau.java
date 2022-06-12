@@ -104,7 +104,6 @@ public class VuePlateau extends Pane {
 
                             for (int j = 0; j < routeActuelle.getChildren().size(); j++) {
                                 Rectangle rectangle = (Rectangle) routeActuelle.getChildren().get(j);
-                                System.out.println(rectangle);
                                 rectangle.setFill(Paint.valueOf(VueDuJeu.getCouleurTraduction(t1)));
                                 rectangle.setStroke(Paint.valueOf("black"));
                                 rectangle.setStrokeWidth(2);
